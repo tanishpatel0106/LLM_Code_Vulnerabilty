@@ -44,29 +44,16 @@ class CTokenizer:
 
 
 def main():
-    # Create a Streamlit app
     st.title("C Tokenizer")
-
-    # File uploader
     uploaded_file = st.file_uploader("Upload a .c file", type=["c"])
 
     if uploaded_file is not None:
         c_program = uploaded_file.read().decode("utf-8")
-
-        # Tokenize the C program
         tokenizer = CTokenizer()
         tokens = tokenizer.tokenize_c_program(c_program)
-
-        # Display tokens
         st.header("Tokens")
-
-        # Convert tokens to a DataFrame
         df = pd.DataFrame(tokens)
-
-        # Show tokens as a table
         st.dataframe(df)
-
-        # Export tokens to a .txt file
         if st.button("Export Tokens"):
             export_data = df.to_string(index=False)
             export_filename = "c_tokens.txt"
