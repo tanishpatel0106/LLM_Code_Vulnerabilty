@@ -47,6 +47,7 @@ class CTokenizer:
         return tokens
 
 
+
 def main():
     st.title("C Tokenizer")
     uploaded_file = st.file_uploader("Upload a .c file", type=["c"])
